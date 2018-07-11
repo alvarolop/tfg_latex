@@ -1,0 +1,41 @@
+\section{Multi-level actuation analysis}
+
+Continuing with the line of argument, we consider four actuation levels. The idea is to analyze actuations that can be implemented in each level. The goal is to control all the subsystems at the highest level possible - user space level - as is the one that will allow to extend the policy implementations in more server models.
+
+Most of the subsystems can be configured thought several levels of actuation, so a brief explanation of what is the difference between each level is been required.
+
+\subsubsection{A) User-space level}
+
+A modern computer operating system usually segregates virtual memory into kernel space and user space. Kernel space is strictly reserved for running a privileged operating system kernel, kernel extensions, and most device drivers. In contrast, user space is the memory area where application software and some drivers execute.
+
+For this reason, in this thesis, any script or program executed by the user in the terminal has been named a user space tool. Examples of user level actuation are enabling and disabling CPUs and DVFS.
+
+\subsubsection{B) Kernel level}
+
+In contrast, kernel space implies changing configuration at lower level. It is useful to change some configurations that cannot be changed when the operating system is up.
+
+In this case, to hotplug memories, some parts of the memory have to be configured as movable, in order to be able to disconnect them. This task is performed using kernel parameters.
+
+\subsubsection{C) BIOS level}
+
+BIOS is a type of firmware used during the booting process. The BIOS firmware is built into personal computers (PCs), and it is the first software they run when they are turned on. The fundamental purposes of the BIOS are to initialize and test the system hardware components, and to load a boot loader or an operating system from a mass memory device. 
+
+But the BIOS also provides an abstraction layer for the hardware that enables the user to set some parameters related to the the hardware.
+
+The server used in this thesis supports some settings to control the fan speed. User can set an RPM offset that makes fans run faster than they should. Offset must be a positive value.
+
+\subsubsection{D) Service Processor}
+
+This server has a service processor which controls some tasks that are usually of the Baseboard Management Controller.
+
+This is very important for a server because, for example, it allows the server to be switched off when it is not used and then, just with a control signal sent by the internal service processor, to be switched on. During this period, the only contributor to the power consumption is the service processor and its consumption is minimum compared with the total consumption of the server. However, you need to take into account the time taken to turn the server on and off.
+
+However it also controls everything related to the fan subsystem. The reason is that refrigeration is essential for the proper functioning of the server. If for any reason, the main server disconnects - for example, because of an elevated temperature - fans would stop running.
+
+Consequently, it is necessary to contol the fan speed through the service processor.
+
+
+
+
+
+

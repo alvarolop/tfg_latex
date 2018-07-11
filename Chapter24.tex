@@ -1,0 +1,71 @@
+\section{Monitoring and evaluation metrics}
+
+In order to test our control techniques and to study the results in terms of energy, we present the monitory setup and describe the metrics we will use through this thesis.
+
+\subsubsection{A) Monitory setup}
+
+Monitoring setup is used to test if control techniques work.
+
+\emph{Graphite}
+
+Graphite is a highly scalable real-time graphing system. As a user, you write an application that collects numeric time-series data that you are interested in graphing, and send it to Graphite's processing backend, carbon, which stores the data in Graphite's specialized database. The data can then be visualized through graphite's web interfaces. 
+
+Using Graphite, the following data can be analyzed:
+
+\begin{itemize}
+    \item[$-$] Server Power (For every component or subsystem).
+    \item[$-$] Fanspeed.
+    \item[$-$] CPU frequency.
+    \item[$-$] Temperature.
+
+\end{itemize}
+
+\emph{Hardware counters}
+
+Workload parameters can be obtained using hardware counters. Hardware performance counters are a set of special-purpose registers built into modern microprocessors to store the counts of hardware-related activities within computer systems.
+
+There are a lot of counters, but in this thesis, only the count of clock cycles (CPU\_CLK\_UNHALTED), the count of instructions of the cpu (INST\_RETIRED) and the count of the last level cache misses (LLC\_MISSES) will be analyzed. Previous work of the Green LSI demonstrates that these are highly correlated with energy.
+
+Performance counters are not displayed in Graphite already, but they are planned to be shown in future. One of the lines of work of the Green LSI is to make Graphite the big  and centralized monitoring system of every server of the team.
+
+
+\subsubsection{B) Metrics}
+\emph{Power}
+
+Power does not depend on the time, so this metric cannot give us the amount of energy consumed. However, maybe a policy is very good at saving energy, but generates power demand peaks that cannot be assumed by the facility. This is why this metric is analyzed.
+
+\emph{Energy}
+
+Energy is also monitored because it represents the total amount of power consumption of a workload. It is directly related to costs. As energy is the result of multiplying the power by the time, the same workload will consume the same energy if consume high power in a reduced time or vice versa. This is the reason why not only the power is studied, but also the energy.
+
+\emph{EDP}
+
+EDP is the result of multiplying the energy consumed by the time in which it is performing the execution.
+\begin{equation*}
+EDP = ENERGY * TIME = POWER * {TIME}^{2}
+\end{equation*}
+The idea is that this metric allows us, using a single parameter, to detect quickly which configurations consume too much energy or time, because its EDP will be too high. Those test with similar EDP will have the same $energy * time$ product, and the decision about on what to prioritize - energy saving or performance -  should be made with other metrics.
+
+This metric compares time and energy equally. This means that doubling time or energy will penalize in the same way the EDP. However, there are other metrics like ED2P or EDnP that penalize doubling the delay time versus the energy consumption, because they have the time in second power. 
+%% http://link.springer.com/chapter/10.1007/978-1-4471-4492-2_8
+%%Date: 05 Sep 2012
+%%Energy Delay Product
+%%James H. Laros III, Kevin Pedretti, Suzanne M. Kelly, Wei Shu, Kurt Ferreira, John %%Vandyke, Courtenay Vaughan
+
+\emph{Performance}
+
+However, power and its combinations are not the only point to take care about.The reason why time is so important for a data center is that it measures how a power saving policy delays the completion time of the benchmark. 
+
+Given that a data center is supposed to be continuously computing workload, if a data center does not consider the performance apart from the energy consumption, the delay of processing can exceed the maximum allowed.
+ 
+\emph{Counters}
+
+Combining parameters, the \emph{number of instructions executed per cycle of clock} will be measured. This measure indicates how fast the processor can calculate the program that is being executed. It is proportional to the consumption of the processor.
+
+% AQuí dedicaría un párrafo a explicar detenidamente qué es cpu intensivbe y memory intensive
+
+The reason of this level of detail is that not all the benchmarks are CPU intensive. Those which are memory intensive spend too much time accessing to the memory but they do not need as much CPU performance as CPU intensive to execute instructions. This parameter will help us also to divide workloads into several types for several different policies.
+
+The other parameter which is useful for this thesis is the \emph{number of last level cache misses}. A CPU cache is a cache used by the central processing unit (CPU) of a computer to reduce the average time to access to data from the main memory. This cache is a smaller and faster memory which stores copies of the data which are more frequently used.
+
+Furthermore, a cache miss refers to a failed attempt to read or write a piece of data in the cache, which results in a main memory access with much longer latency. It may be important to be able to detect this type of workload and to operate it with a different policy.

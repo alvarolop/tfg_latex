@@ -1,0 +1,126 @@
+\documentclass[12pt,a4paper,english,twoside]{book} %book, report, article
+\usepackage{babel} %%%Incluimos el paquete Babel que sirve para separar correctamente las palabras de multitud de idiomas%%%
+\usepackage[utf8]{inputenc}%%%Este paquete permite poner acentos directamente%%%
+\usepackage{amsmath}%%%Macros AMS%%%
+%\usepackage{amsthm}%%%Macros AMS para teoremas%%%
+%\usepackage{amsfonts}%%%Permite usar fuentes AMS%%%
+\usepackage[dvips]{epsfig} %%%Inclusión de figuras postscript con visualización posterior%%%
+\usepackage{indentfirst} %%%Espaciado de primera línea de cada párrafo%%%
+\usepackage[gen]{eurosym} %soporte para el comando \euro
+\usepackage{hyperref}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{anysize}
+\usepackage{gensymb}
+\marginsize{4cm}{3cm}{3cm}{2cm} %define márgenes {izdo}{drch}{sup}{inf}
+\usepackage{rotating}
+\usepackage{ulem}
+\usepackage{makeidx}
+%\usepackage{showidx}
+\usepackage{color}
+\usepackage{listings}
+
+\usepackage{color}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage[final]{pdfpages} %Permite insertar pdf's enteros o por paginas
+
+\usepackage{hyperref}
+\usepackage{boxedminipage}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{subfigure}
+
+%Paquetes de Alvaro
+\usepackage{enumerate} % enumerados
+%\begin{enumerate}[A.]
+%    \item Manzanas.
+%    \item Plátanos.
+%    \item Pescado fresco.
+%\end{enumerate}
+\usepackage{float} % para usar [H]
+\usepackage{cite}
+\usepackage{url}
+\usepackage{wrapfig}
+
+
+% \newcommand{\metodo}[1]{\ttfamily{#1}\normalfont }
+% \definecolor{listinggray}{gray}{0.9}
+% \newcommand{\codigo}[3]{\lstset{language=c}\lstset{backgroundcolor=\color{listinggray},rulecolor=\color{black}}\lstset{commentstyle=\textit,showspaces=false,tabsize=4}\lstset{linewidth=\textwidth}\lstset{frame=TrBl,framerule=1.5pt}\lstinputlisting[caption=#1,label=#2]{#3}}, stringstyle=\upshape
+% \newcommand{\cabecera}[1]{\ttfamily{#1}\normalfont}
+
+\newenvironment{codigo}[1]{\flushleft\boxedminipage{\linewidth}\fontsize{#1}{#1}\selectfont\verbatim}{\endverbatim\endboxedminipage\endflushleft}
+
+\pretolerance=10000 %para que no separe las palabras al cambiar de linea
+\tolerance=10000
+
+% Personalización
+\titleformat{\chapter}[display] %Define formato de los capítulos
+{\Huge\filright}			%format	
+{\Huge\scshape{\chaptertitlename}	%'chapter number' format
+ \Huge\thechapter
+}
+{5mm}{\bfseries}
+
+\makeindex
+
+\begin{document}
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\evensidemargin}{-1cm}
+\pagestyle{empty}
+
+
+\input{A_Title}
+
+\frontmatter
+\pagestyle{headings}
+\addtolength{\parskip}{+.25cm}
+\addtolength{\parindent}{+.5cm}
+\addtolength{\oddsidemargin}{+1cm}
+\addtolength{\evensidemargin}{+1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{Abstract}
+\include{Acronyms}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+%\marginsize{6cm}{2.5cm}{3cm}{2cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nota: Para mayor manejabilidad, se puede incluir cada capítulo en un archivo
+% separado, con el comando "input"
+%\input{introduccion}
+
+\input{Chapter1}
+\input{Chapter2}
+\input{Chapter3}
+
+
+\cleardoublepage
+ \backmatter
+\nocite{*}
+\bibliographystyle{unsrt} %unsrt %plainurl %ieeetr
+\bibliography{References}
+\addcontentsline{toc}{part}{References}
+
+%\input{References}
+
+\printindex
+
+\cleardoublepage
+\newpage
+\vspace*{13cm}
+
+%\hline
+
+\begin{center}
+This page is left blank intentionally.
+\end{center}
+\end{document}

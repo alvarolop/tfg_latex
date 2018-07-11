@@ -1,0 +1,33 @@
+\chapter{Conclusions}
+
+Nowadays, reducing the power consumption and therefore costs is one of the main goals of any business. Specially in data centers, where the largest item of expenditure is the power cost, it is a critical goal.
+
+In this thesis, the main objective has been analyzing all non-intrusive actuation control techniques for enterprise servers, focusing in the OCP Decathlete in order to provide support to the optimization of researches. This server has been chosen due to it is open design and all the customization possibilities this involves.
+
+First, it has been analyzed how to change the configuration of memories, processors and fans in several ways. Then, the second phase had the aim of managing them at user space level in the OS. This would generalise this new technique for as many server models as possible helping the GreenLSI to implement it in all their servers.
+
+For those servers that can be currently controlled, some benchmarks have been tested in order to model the behaviour of the server using different power configurations. Thanks to the results of the benchmarks, the relation between the power consumption and the performance has been quantified.
+
+Finally, it has been studied the implications of using DVFS or turning off some CPUs in each type of workload in order to define a new saving policy to apply in the server.
+
+\newpage
+\section{Future Work}
+
+Here I will list the main points I think future works should be focused in order to achieve the goal of controlling this enterprise server.
+
+\emph{Future actions on actuation techniques}
+
+\begin{itemize}
+
+\item Firstly, it is important to rise the actuation level of some subsystems, specially fans control which can only be managed using the SP, to the OS level. This effort will help the GreenLSI to control the fan speed as they want to be able to create solid actuation policies.
+
+\item During this project we analyzed the firmware deployed at the SP and we believe it would be possible to add support at the firmware level for fan control.
+
+
+
+\emph{Research items}
+
+\item At the end of this thesis we have provided a way to enable and disable memory DIMMs. However, a deep assessment on the power/energy/EDP benefits of this approach needs to be investigated. Moreover, this open new research challenges from the workload allocation perspective, allowing to decide the amounts of DIMMs active for each workload.
+
+\item Finally, now that it is known how it affects to the server the DVFS and the CPU's off, it is necessary to create a complex policy based on the different type of workloads - CPU intensive and Memory intensive - in order to save the maximum amount of energy as possible combining those techniques.
+\end{itemize}

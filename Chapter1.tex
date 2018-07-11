@@ -1,0 +1,30 @@
+\chapter{Introduction and Objectives}
+\section{Background and motivation}
+
+Today, due to the need of minimizing costs, power saving is one of the key aspects in almost every technological project. Those companies whose activities require more power consumption are more interested in develop energy aware policies in order to save costs. 
+
+Moreover, nowadays, cloud computing has revolutionized the information technology (IT) industry by enabling elastic on-demand provisioning of computer resources. Cloud computing has resulted in the establishment of big Data Centers (DC) containing the infrastructure needed. Nevertheless, this server concentration makes data centers one of the greatest users of energy around the world.
+
+According to Koomey \cite{koomey2011growth}, the electricity used in 2010 by world data centers represented between 1.1 and 1.5\% of the total amount, whereas in the US data centers, the electricity represented between 1.7 and 2.2\%. Nowadays, the contribution of data centers to European electricity consumption is estimated to be around 2 to 2.5\%. \cite{datoEUROPAConsumo}
+
+The paragraph above shows a clear growing trend. This trend is caused by two factors: the continuous growing of the number of DCs and racks, and the increment in power demand per rack. This is owing to the existence of more efficient servers, but also more powerful, so they need more power to run. Minimizing power consumption of DC will save a large amount of energy.
+
+Given this power consumption data, it is important to study which are the main contributors in a normal DC. First of all, we will divide them in two groups: on the one hand, the power consumption of the servers, which is called "IT Energy" and on the other hand the consumption of the remaining systems that cover the needs of servers - cooling, lightning, etc. - plus the energy losses due to inefficiencies in the power distribution network. There are several lines of work that explore minimization of the expenditure for both contributions. \cite{Brady2013}
+
+Nowadays, there are various lines on how to save energy in Data Centers. For example, the Open Compute Project \cite{ocpHomepage} provides a set of specifications to be met by green servers. There are also some server-control policies defined to save energy. These policies are usually defined and implemented at low level - i.e. firmware - and are transparent for the user. Some processors and fans, have power-saving state that allow them to save energy.
+
+The research of the GreenLSI team \cite{grenlsiHP} is focused on the development of holistic optimization policies  to minimize energy in data centers. Their research results have provided some complex policies that can be applied at various abstraction levels, from the server to the data center. However, some of their proposed policies currently lack the actuation support needed to be implemented in a non-intrusive ways in commercial servers. In this sense, the goal of this bachelor thesis is to fill this gap, analyzing how actuation techniques can be implemented at the highest level possible, providing actuation support to the optimizations developed by researchers.
+
+The IT Equipment will be analyzed in order to create actuation support that could minimize this power consumption. Firstly, analyzing which components of the server can be managed and at which level of abstraction. Secondly, studying the consumption behavior depending on the power configuration selected. Finally, with this information, some conclusions can be drawn.
+
+\section{Objectives}
+Therefore, the aim of this thesis  is to analyze control techniques to reduce the consumption of DCs. In order to perform this task, each component of the server will be examined separately and new control techniques will be implemented to analyze the consumption minimization.
+Accordingly, the main objectives for the present work are:
+\begin{itemize}
+    \item Analysis of the main subsystems of the server that have an impact on power in order to understand the power saving that can be achieved in each system.
+    \item Analysis of several levels of abstraction so as to find the highest level in which each of the subsystems previously mentioned can be implemented.
+    \item Analysis of the impact of each actuation support to find out which reduces more the consumption.
+    \item Development of the most suitable multi-level actuation techniques to minimize the energy consumption.
+    \item Analysis of actuation policies to optimize energy.
+\end{itemize}
+
