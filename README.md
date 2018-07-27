@@ -1,4 +1,4 @@
-# Trabajo de Fin de Grado
+# Analysis and design of multi-level actuation policies to minimize the energy consumption of enterprise servers
 This is the source code of the Latex project of my Bachelor's Thesis.
 
 ## Abstract
@@ -18,25 +18,6 @@ The main goal is to analyze all the possibilities in controlling each subsystem.
 Although the most suitable situation would be that there were tools at user level to control all subsystems, this is rarely the case in commercial servers. Therefore, another issue this project will tackle is the analysis of which subsystems are more limited and find out solutions for them, balancing the trade off between high configurability and possibility of generalizing the solution.
 
 Finally, the implemented actions are validated by launching benchmarks for enterprise servers, analyzing the impact on energy savings of the actions proposed at various subsystems and various abstraction levels.
-
-
-## Resumen del trabajo
-El objetivo de este Trabajo de Fin de Grado es el de analizar técnicas de control y mejora del consumo en un servidor de altas prestaciones para la reducción del consumo energético en Centros de Datos. 
-
-Para ello, partiendo de un trabajo previo del grupo de investigación en el que se llevaba a cabo un modelado analítico de un servidor de altas prestaciones, se pretenden analizar las políticas de control y la posibilidad de automatización de las mismas en los subsistemas del servidor con mayor impacto en el consumo total del mismo. 
-
-Este trabajo se lleva a cabo en un servidor Intel Decathlete, del Open Compute Project, que es un proyecto iniciado por Facebook para buscar el servidor más eficiente posible. La elección de este servidor se ha basado en dos criterios: la gran flexibilidad y la capacidad de automatización, que son dos requisitos que cumple el mencionado servidor al basarse en hardware abierto.
-
-De esta manera, como primer paso se analizarán y priorizarán los subsistemas a controlar en función del ahorro esperado. De acuerdo con el modelado anterior, estos sistemas serán la CPU, los DIMMs de memoria, los ventiladores y los discos. Para cada subsistema se evaluarán las posibilidades de actuación más relevantes. Por ejemplo, en el caso de actuación sobre CPU se contemplarán, entre otros, el apagado y encendido de núcleos del procesador, y el escalado dinámico de voltaje y frecuencia (DVFS).  
-
-Además, se analizarán las ventajas e inconvenientes de la actuación, para cada uno de los subsistemas a diversos niveles de abstracción. Para cada sistema se establecerá la posibilidad de actuación, por ejemplo: a nivel de sistema operativo en espacio de usuario, a nivel de Kernel, procesador de servicio de la máquina o incluso mediante la variación de parámetros en la BIOS. 
-
-El objetivo principal es analizar todas las técnicas actuales para controlar los subsistemas, implementando aquellas técnicas soportadas por el servidor. Para ello, se procurará buscar siempre el nivel de abstracción más alto de manera que permita una mayor simplicidad a la hora de trabajar, así como la compatibilidad con un rango mayor de servidores. Sin embargo, el trabajo a niveles altos de abstracción podrá suponer la pérdida de configurabilidad. 
-
-A pesar de que el caso ideal sería que existieran herramientas a nivel de usuario para controlar todos los subsistemas, esto no suele ser así en servidores comerciales. Por ello, otra de las tareas en las que se centrará este trabajo será analizar qué subsistemas están más limitados y estudiar posibles soluciones, equilibrando el compromiso entre gran configurabilidad y posibilidad de generalizar la solución. 
-
-Por último, se validarán las actuaciones implementadas mediante el lanzamiento de benchmarks para servidores de altas prestaciones, analizando el impacto en el ahorro de las actuaciones propuestas en los diversos subsistemas y a varios niveles.
-
 
 
 ## Keywords
